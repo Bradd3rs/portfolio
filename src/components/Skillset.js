@@ -28,14 +28,18 @@ const Content = styled.div`
     justify-content: space-evenly;
     flex-flow: wrap;
 
+    img {
+        max-height: 100px;
+        margin: 10px;
+    }
+
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
         margin: 30px auto;
-    }
 
-    img {
-        min-width: 100px;
-        height: 100px;
-        margin: 10px;
+        img {
+            max-height: 200px;
+            margin: 10px;
+        }
     }
 `;
