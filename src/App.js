@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Header from './components/Header';
-import Img from '../src/lightStock.jpg';
+import Footer from './components/Footer';
 
 class App extends Component {
   render() {
     return (
       <Content>
-        <Header />
+        <Container>
+          <Header />
+        </Container>
+        <Footer />
       </Content>
     );
   }
@@ -16,22 +19,20 @@ class App extends Component {
 export default App;
 
 const Content = styled.section`
-  @import url('https://fonts.googleapis.com/css?family=Lato');
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
-  background-image: url(${Img});
-  background-size:cover;
-  box-shadow:inset 0 0 0 2000px rgba(52, 73, 93,0.4);
-  height: 300px;
-  color: white;
+`;
+
+const Container = styled.div`
 
   h1 {
     font-size: 2em;
+    font-weight: 400;
   }
 
   p {
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 `;

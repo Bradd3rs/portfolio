@@ -1,20 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
+import Skillset from './Skillset';
+
 
 const Home = () => (
     <Section>
-        <h1>Thomas Bradley</h1>
-        <p>A passionate web developer focussed on building fast, beautiful web apps.</p>
+        <Content>
+            <h1>Hello.</h1>
+            <p>Content here</p>
+        </Content>
+        <Skillset />
     </Section>
  );
 
  export default Home;
 
 const Section = styled.section`
+`;
+
+const Content = styled.div`
+    color: #212121;
     padding: 20px;
-    
-    p {
-        max-width: 400px;
-        line-height: 25px;
-    }
+    max-width: 900px;
+    margin: auto;
 `;
