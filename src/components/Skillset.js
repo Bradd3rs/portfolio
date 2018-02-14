@@ -29,7 +29,7 @@ const Content = styled.div`
     flex-flow: wrap;
 
     img {
-        max-height: 100px;
+        max-height: 60px;
         margin: 10px;
     }
 
@@ -38,7 +38,7 @@ const Content = styled.div`
         margin: 30px auto;
 
         img {
-            max-height: 200px;
+            max-height: 110px;
             margin: 10px;
         }
     }
