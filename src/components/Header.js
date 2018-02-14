@@ -43,8 +43,12 @@ const NavContainer = styled.div`
   background-image: url(${Img});
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(52, 73, 93,0.4);
-  height: 300px;
+  height: 220px;
   color: white;
+
+  @media only screen and (min-width: 768px) {
+    height: 300px;
+  }
 `;
 
 const Navigation = styled.ul`

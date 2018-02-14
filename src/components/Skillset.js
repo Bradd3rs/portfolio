@@ -23,13 +23,14 @@ const Section = styled.section`
 
 const Content = styled.div`
     max-width: 900px;
-    margin: 60px auto;
+    margin: 0 auto 20px;
     display: flex;
     justify-content: space-evenly;
     flex-flow: wrap;
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
+        margin: 30px auto;
     }
 
     img {

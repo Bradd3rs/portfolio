@@ -7,7 +7,7 @@ const Home = () => (
     <Section>
         <Content>
             <h1>Hello.</h1>
-            <p>Content here</p>
+            <p>Here you'll find my personal web app. This is my playground and also where I show off just some of the awesome stuff I have been involved with. Take a look around, click on stuff and if you really want to, get in touch!</p>
         </Content>
         <Skillset />
     </Section>
@@ -23,4 +23,8 @@ const Content = styled.div`
     padding: 20px;
     max-width: 900px;
     margin: auto;
+
+    p {
+        line-height: 21px;
+    }
 `;

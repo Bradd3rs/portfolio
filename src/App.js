@@ -22,17 +22,31 @@ const Content = styled.section`
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+
+  h1 {
+    font-weight: 400;
+  }
 `;
 
 const Container = styled.div`
 
   h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 400;
   }
 
   p {
     font-weight: 300;
-    letter-spacing: 1px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    h1 {
+      font-size: 2em;
+    }
+
+    p {
+      letter-spacing: 1px;
+    }
   }
 `;
+

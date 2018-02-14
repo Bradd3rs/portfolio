@@ -8,10 +8,10 @@ const Footer = () => (
             <h1>Contact</h1>
             <p>Please contact me via any of the following social media</p>
             <Social>
-                <FaGithubSquare />
-                <FaLinkedinSquare />
-                <FaInstagram />
-                <FaEnvelopeSquare />
+                <a href="https://github.com/Bradd3rs/" target="_blank" rel="noopener noreferrer"><FaGithubSquare /></a>
+                <a href="https://www.linkedin.com/in/thomas-s-bradley/" target="_blank" rel="noopener noreferrer"><FaLinkedinSquare /></a>
+                <a href="https://www.instagram.com/bradd3rss/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                <a href="http://www.google.com" target="_blank" rel="noopener noreferrer"><FaEnvelopeSquare /></a>
             </Social>
         </FooterSection>
     </Section>
@@ -41,8 +41,20 @@ const Social = styled.div`
     justify-content: left;
     font-size: 40px;
 
+    a {
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
     > * {
         margin: 5px;
+        transform: translateY(0);
+        transition: transform .3s ease-out;
+
+        &:hover {
+            transform: translateY(-3px);
+        }
 
         &:first-child {
             margin-left: 0;

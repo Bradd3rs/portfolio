@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import Example from './Example';
+import BwgImg from '../img/bwg.png';
+import BwcImg from '../img/bwc.png';
 
 const Work = () => (
     <Section>
         <Content>
             <h1>Some things I've done.</h1>
-            <p>Here are just some examples of projects I have worked on</p>
+            <p>Here are just some examples of projects I have worked on, some commercial and some just for fun!</p>
         </Content>
         <Examples>
-            <Example />
-            <Example />
-            <Example />
-            <Example />
+            <Example url="https://careers.betwaygroup.com/" bgImage={BwgImg} />
+            <Example url="https://casino.betway.com/lobby/" bgImage={BwcImg} />
         </Examples>
     </Section>
  );
@@ -27,6 +27,10 @@ const Content = styled.div`
     padding: 20px;
     max-width: 900px;
     margin: auto;
+
+    p {
+        line-height: 21px;
+    }
 `;
 
 const Examples = styled.div`
