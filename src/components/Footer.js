@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithubSquare, FaLinkedinSquare, FaInstagram, FaEnvelopeSquare } from 'react-icons/lib/fa'
+import Credits from './Credits';
+import { FaGithubSquare, FaLinkedinSquare, FaInstagram, FaEnvelopeSquare} from 'react-icons/lib/fa';
 
-const Footer = () => (
+const Footer = ({ credits }) => (
     <Section>
         <FooterSection>
             <h1>Contact</h1>
@@ -13,6 +14,7 @@ const Footer = () => (
                 <a href="https://www.instagram.com/bradd3rss/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
                 <a href="http://www.google.com" target="_blank" rel="noopener noreferrer"><FaEnvelopeSquare /></a>
             </Social>
+            <Credits credits={credits} />
         </FooterSection>
     </Section>
  );

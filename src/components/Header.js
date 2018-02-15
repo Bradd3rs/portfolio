@@ -6,13 +6,13 @@ import Work from './Work';
 import Contact from './Contact';
 import Img from '../img/lightStock.jpg';
 
-const Header = () => (
+const Header = ({ addCredit }) => (
   <Router>
     <div>
       <NavContainer>
         <Navigation>
           <li>
-            <NavLink activeClassName="selected" to="/" exact={true}>Home</NavLink>
+            <NavLink onClick={addCredit} activeClassName="selected" to="/" exact={true}>Home</NavLink>
           </li>
           <li>
             <NavLink activeClassName="selected" to="/work">Work</NavLink>

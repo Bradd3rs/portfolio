@@ -10,7 +10,7 @@ class Example extends React.Component {
             margin: 10px 0;
             width: 100%;
             max-width: 400px;
-            height: 250px;
+            height: 170px;
             transform: translateY(0);
             box-shadow: 0 10px 20px rgba(0,0,0,0), 0 6px 6px rgba(0,0,0,0);
             transition: transform .3s ease-out, box-shadow .3s ease-out;
@@ -22,6 +22,9 @@ class Example extends React.Component {
 
             @media only screen and (min-width: 768px) {
                 border-width: 2px;
+                height: 250px;
+                margin: 10px;
+                
             }
         `;
         return (

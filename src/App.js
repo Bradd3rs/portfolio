@@ -4,13 +4,23 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      credits: 1
+    }
+    this.handleAddCredit = this.handleAddCredit.bind(this);
+  }
+  handleAddCredit() {
+    this.setState((prevState) => ({ credits: prevState.credits + 1 }) )
+  }
   render() {
     return (
       <Content>
         <Container>
-          <Header />
+          <Header addCredit={this.handleAddCredit} />
         </Container>
-        <Footer />
+        <Footer credits={this.state.credits} />
       </Content>
     );
   }
