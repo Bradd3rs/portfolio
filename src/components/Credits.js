@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaDollar } from 'react-icons/lib/fa';
+import { FaDiamond } from 'react-icons/lib/fa';
 
 const Credits = ({ credits }) => (
     <Credit>
-        <FaDollar /><span>{credits}</span>
+        <FaDiamond /><span> {credits}</span>
     </Credit>
  );
 

@@ -14,7 +14,7 @@ const Footer = ({ credits }) => (
                 <a href="https://www.instagram.com/bradd3rss/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
                 <a href="http://www.google.com" target="_blank" rel="noopener noreferrer"><FaEnvelopeSquare /></a>
             </Social>
-            <Credits credits={credits} />
+            { credits > 0 ? <Credits credits={credits} /> : null }
         </FooterSection>
     </Section>
  );

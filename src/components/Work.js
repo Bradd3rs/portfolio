@@ -7,7 +7,7 @@ import BwcImg from '../img/bwc.png';
 const Work = () => (
     <Section>
         <Content>
-            <h1>Some things I've done.</h1>
+            <h1>Some things I've done</h1>
             <p>Here are just some examples of projects I have worked on, some commercial and some just for fun!</p>
         </Content>
         <Examples>

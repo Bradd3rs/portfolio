@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import EasterEgg from './components/EasterEgg';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      credits: 1
+      credits: 0
     }
     this.handleAddCredit = this.handleAddCredit.bind(this);
   }
@@ -18,7 +19,8 @@ class App extends Component {
     return (
       <Content>
         <Container>
-          <Header addCredit={this.handleAddCredit} />
+          <Header credits={this.state.credits} addCredit={this.handleAddCredit} />
+        { this.state.credits >= 100 ? <EasterEgg /> : null }
         </Container>
         <Footer credits={this.state.credits} />
       </Content>
@@ -32,6 +34,7 @@ const Content = styled.section`
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
+  user-select: none;
 
   h1 {
     font-weight: 400;
@@ -45,8 +48,15 @@ const Container = styled.div`
     font-weight: 400;
   }
 
-  p {
+  p,
+  li {
     font-weight: 300;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 400;
   }
 
   @media only screen and (min-width: 768px) {

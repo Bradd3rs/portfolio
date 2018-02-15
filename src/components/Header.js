@@ -5,14 +5,15 @@ import Home from './Home';
 import Work from './Work';
 import Contact from './Contact';
 import Img from '../img/lightStock.jpg';
+import { FaDiamond } from 'react-icons/lib/fa';
 
-const Header = ({ addCredit }) => (
+const Header = ({ addCredit, credits }) => (
   <Router>
     <div>
       <NavContainer>
         <Navigation>
           <li>
-            <NavLink onClick={addCredit} activeClassName="selected" to="/" exact={true}>Home</NavLink>
+            <NavLink activeClassName="selected" to="/" exact={true}>Home</NavLink>
           </li>
           <li>
             <NavLink activeClassName="selected" to="/work">Work</NavLink>
@@ -23,8 +24,14 @@ const Header = ({ addCredit }) => (
         </Navigation>
 
         <Section>
-            <h1>Thomas Bradley</h1>
-            <p>A passionate web developer focussed on building fast, beautiful web apps</p>
+            <h1 onClick={ credits < 10 ? addCredit : null } >Thomas Bradley</h1>
+            <p>A passionate web developer focussed on building fast, beautiful web apps { credits >= 9 && credits ? 
+              <FaDiamond onClick={ credits >= 10 && credits < 15  ? addCredit : null } className={`easter-egg ${ credits >= 10 && credits < 15 ?
+                'reveal' 
+                : 
+                null }`} /> 
+              : 
+              null }</p>
         </Section>
 
       </NavContainer>
@@ -90,6 +97,19 @@ const Section = styled.section`
     padding: 20px;
     max-width: 900px;
     margin: auto;
+
+    .easter-egg {
+      opacity: 0;
+      transition: opacity .5s ease-out;
+
+      &.reveal {
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      cursor: pointer;
+    }
     
     p {
         max-width: 400px;

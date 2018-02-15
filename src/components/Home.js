@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Skillset from './Skillset';
 
-
 const Home = () => (
     <Section>
         <Content>
-            <h1>Hello.</h1>
+            <h1>Hello</h1>
             <p>Here you'll find my personal web app. This is my playground and also where I show off just some of the awesome stuff I have been involved with. Take a look around, click on stuff and if you really want to, get in touch!</p>
         </Content>
         <Skillset />
