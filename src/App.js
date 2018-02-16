@@ -64,7 +64,8 @@ const Container = styled.div`
       font-size: 2em;
     }
 
-    p {
+    p,
+    li {
       letter-spacing: 1px;
     }
   }
