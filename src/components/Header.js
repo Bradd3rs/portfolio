@@ -26,7 +26,7 @@ const Header = ({ addCredit, credits }) => (
         <Section>
             <h1 onClick={ credits < 10 ? addCredit : null } >Thomas Bradley</h1>
             <p>A passionate web developer focussed on building fast, beautiful web apps { credits >= 9 && credits ? 
-              <FaDiamond onClick={ credits >= 10 && credits < 15  ? addCredit : null } className={`easter-egg ${ credits >= 10 && credits < 15 ?
+              <FaDiamond onClick={ credits >= 10 && credits < 15  ? addCredit : null } className={`easter-egg ${ credits >= 10 ?
                 'reveal' 
                 : 
                 null }`} /> 

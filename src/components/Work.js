@@ -28,6 +28,10 @@ const Content = styled.div`
     max-width: 900px;
     margin: auto;
 
+    h1 {
+        color: #1E88E5;
+    }   
+
     p {
         line-height: 21px;
     }

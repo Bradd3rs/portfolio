@@ -6,7 +6,7 @@ class Example extends React.Component {
         const Section = styled.a`
             background-image: url(${this.props.bgImage});
             background-size: cover;
-            border: 5px solid #D1C4E9;
+            border: 5px solid #1565C0;
             margin: 10px 0;
             width: 100%;
             max-width: 400px;

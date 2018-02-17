@@ -22,7 +22,7 @@ const Footer = ({ credits }) => (
  export default Footer;
 
  const Section = styled.section`
-    background: #673AB7;
+    background: #1E88E5;
     color: white;
 `;
 
