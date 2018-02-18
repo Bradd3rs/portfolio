@@ -1,10 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 import Home from './Home';
 import Work from './Work';
 import Contact from './Contact';
 import Ctoss from './Ctoss';
+import NotFound from './NotFound';
 import Img from '../img/bannerImg.jpg';
 import { FaDiamond } from 'react-icons/lib/fa';
 
@@ -43,11 +44,13 @@ const Header = ({ addCredit, credits }) => (
         </Section>
 
       </NavContainer>
-
-      <Route exact path="/" component={Home} />
-      <Route path="/work" component={Work} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/ctoss" component={Ctoss} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/work" component={Work} />
+        <Route path="/contact" component={Contact} />
+        { credits >= 15 ? <Route path="/ctoss" component={Ctoss} /> : null }
+        <Route component={NotFound} />
+      </Switch>
     </div>
   </Router>
 );

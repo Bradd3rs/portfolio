@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import fire from '../fire';
 
 class Ctoss extends React.Component {
     constructor(props) {
@@ -15,21 +16,25 @@ class Ctoss extends React.Component {
         this.handleJc = this.handleJc.bind(this);
         this.handleFelix = this.handleFelix.bind(this);
     }
-    componentDidMount() {
-        try {
-            const json = localStorage.getItem('scores');
-            const scores = JSON.parse(json);
+    componentWillMount() {
+            let scores = fire.database().ref('scores');
 
-            if (scores) {
-                this.setState(() => (scores));
-            }
-        } catch (e) {
-            // Do nothing
-        }
+            scores.on("value", (snapshot) => {
+                let savedData = snapshot.val()
+                this.setState(() => (savedData));
+            }, (errorObject) => {
+                console.log("The read failed: " + errorObject.code);
+            });
     }
     componentDidUpdate(prevProps, prevState) {
-        const json = JSON.stringify(this.state);
-        localStorage.setItem('scores', json);
+        fire.database().ref('scores').set(
+            { 
+                tom: this.state.tom, 
+                sam: this.state.sam, 
+                jc: this.state.jc, 
+                felix: this.state.felix, 
+            }
+        );
     }
     handleTom() {
         this.setState((prevState) => ({ tom: prevState.tom + 1 }));
@@ -90,7 +95,7 @@ const Content = styled.div`
         margin: 25px auto;
     }
 
-    h1 {
+    h2 {
         color: #1E88E5;
     }
 
