@@ -24,7 +24,7 @@ const Header = ({ addCredit, credits }) => (
           </li>
           { credits >= 15 ?
             <li>
-              <NavLink activeClassName="selected" to="/ctoss">Ctoss</NavLink>
+              <NavLink activeClassName="selected" to="/ctoss"><FaDiamond /></NavLink>
             </li>
             :
             null
