@@ -35,7 +35,7 @@ const Content = styled.div`
 
     @media only screen and (min-width: 768px) {
         justify-content: space-between;
-        margin: 30px auto;
+        margin: 30px auto 50px;;
 
         img {
             max-height: 110px;

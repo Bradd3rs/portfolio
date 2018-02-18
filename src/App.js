@@ -12,6 +12,22 @@ class App extends Component {
     }
     this.handleAddCredit = this.handleAddCredit.bind(this);
   }
+  componentDidMount() {
+      try {
+          const json = localStorage.getItem('credits');
+          const credits = JSON.parse(json);
+
+          if (credits) {
+              this.setState(() => ({ credits: credits }));
+          }
+      } catch (e) {
+          // Do nothing
+      }
+  }
+  componentDidUpdate(prevProps, prevState) {
+      const json = JSON.stringify(this.state.credits);
+      localStorage.setItem('credits', json);
+  }
   handleAddCredit() {
     this.setState((prevState) => ({ credits: prevState.credits + 1 }) )
   }

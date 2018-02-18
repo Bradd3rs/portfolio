@@ -5,10 +5,10 @@ class Example extends React.Component {
     render() {
         const Section = styled.a`
             background-image: url(${this.props.bgImage});
+            border: 1px solid #f1f1f1;
             background-size: cover;
-            border: 5px solid #1565C0;
-            margin: 10px 0;
-            width: 100%;
+            margin: 1px 0;
+            width: 49%;
             max-width: 400px;
             height: 170px;
             transform: translateY(0);
@@ -21,10 +21,8 @@ class Example extends React.Component {
             }
 
             @media only screen and (min-width: 768px) {
-                border-width: 2px;
                 height: 250px;
-                margin: 10px;
-                
+                margin: 10px 0;
             }
         `;
         return (

@@ -6,7 +6,7 @@ const Home = () => (
     <Section>
         <Content>
             <h1>Hello</h1>
-            <p>Here you'll find my personal web app. This is my playground and also where I show off just some of the awesome stuff I have been involved with. Take a look around, click on stuff and if you really want to, get in touch!</p>
+            <p>Here you'll find my personal web app. This is my playground and also where I show off just some of the awesome stuff I have been involved with. Take a look around, click on stuff and try to unlock all the easter eggs!</p>
         </Content>
         <Skillset />
     </Section>
@@ -22,6 +22,10 @@ const Content = styled.div`
     padding: 20px;
     max-width: 900px;
     margin: auto;
+
+    @media only screen and (min-width: 768px) {
+        margin: 25px auto 0;
+    }
 
     h1 {
         color: #1E88E5;

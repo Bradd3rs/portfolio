@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Home from './Home';
 import Work from './Work';
 import Contact from './Contact';
+import Ctoss from './Ctoss';
 import Img from '../img/lightStock.jpg';
 import { FaDiamond } from 'react-icons/lib/fa';
 
@@ -21,6 +22,13 @@ const Header = ({ addCredit, credits }) => (
           <li>
             <NavLink activeClassName="selected" to="/contact">Contact</NavLink>
           </li>
+          { credits >= 15 ?
+            <li>
+              <NavLink activeClassName="selected" to="/ctoss">Ctoss</NavLink>
+            </li>
+            :
+            null
+          }
         </Navigation>
 
         <Section>
@@ -39,6 +47,7 @@ const Header = ({ addCredit, credits }) => (
       <Route exact path="/" component={Home} />
       <Route path="/work" component={Work} />
       <Route path="/contact" component={Contact} />
+      <Route path="/ctoss" component={Ctoss} />
     </div>
   </Router>
 );
