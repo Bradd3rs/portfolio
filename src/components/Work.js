@@ -54,7 +54,7 @@ const Examples = styled.div`
     margin-bottom: 20px;
 
     @media only screen and (min-width: 768px) {
-        justify-content: space-evenly;
+        justify-content: space-around;
         margin-bottom: 50px;
     }
 `;

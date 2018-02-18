@@ -102,6 +102,10 @@ const Content = styled.div`
 const Container = styled.div`
     display: flex;
     justify-content: space-evenly;
+
+    @media only screen and (min-width: 768px) {
+        justify-content: space-around;
+    }
 `;
 const ScoreBlock = styled.div`
     text-align: center;
