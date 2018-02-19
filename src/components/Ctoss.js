@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import fire from '../fire';
+import { FaPlus } from 'react-icons/lib/fa';
 
 class Ctoss extends React.Component {
     constructor(props) {
@@ -56,22 +57,22 @@ class Ctoss extends React.Component {
                         <ScoreBlock>
                             <h2>Tom</h2>
                             <p>{this.state.tom}</p>
-                            <button onClick={this.handleTom} type="button">Winner</button>
+                            <button onClick={this.handleTom} type="button"><FaPlus /></button>
                         </ScoreBlock>
                         <ScoreBlock>
                             <h2>Sam</h2>
                             <p>{this.state.sam}</p>
-                            <button onClick={this.handleSam} type="button">Winner</button>
+                            <button onClick={this.handleSam} type="button"><FaPlus /></button>
                         </ScoreBlock>
                         <ScoreBlock>
                             <h2>JC</h2>
                             <p>{this.state.jc}</p>
-                            <button onClick={this.handleJc} type="button">Winner</button>
+                            <button onClick={this.handleJc} type="button"><FaPlus /></button>
                         </ScoreBlock>
                         <ScoreBlock>
                             <h2>Felix</h2>
                             <p>{this.state.felix}</p>
-                            <button onClick={this.handleFelix} type="button">Winner</button>
+                            <button onClick={this.handleFelix} type="button"><FaPlus /></button>
                         </ScoreBlock>
                     </Container>
                 </Content>
@@ -122,7 +123,7 @@ const ScoreBlock = styled.div`
     button {
         color: white;
         background: #0D47A1;
-        padding: 10px 10px;
+        padding: 10px;
         margin: 0 5px;
         border: none;
         border-radius: 3px;
