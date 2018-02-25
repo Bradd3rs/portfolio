@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-do
 import Home from './Home';
 import Work from './Work';
 import Contact from './Contact';
-import Ctoss from './Ctoss';
+// import Ctoss from './Ctoss';
 import Gamble from './Gamble';
 import NotFound from './NotFound';
 import Img from '../img/bannerImg.jpg';
@@ -26,7 +26,7 @@ const Header = ({ addCredit, credits }) => (
           </li>
           { credits >= 15 ?
             <li>
-              <NavLink activeClassName="selected" to="/ctoss"><FaDiamond /></NavLink>
+              <NavLink activeClassName="selected" to="/flipIt"><FaDiamond /></NavLink>
             </li>
             :
             null
@@ -49,8 +49,7 @@ const Header = ({ addCredit, credits }) => (
         <Route exact path="/" component={Home} />
         <Route path="/work" component={Work} />
         <Route path="/contact" component={Contact} />
-        { credits >= 15 ? <Route path="/ctoss" component={Ctoss} /> : null }
-        { credits >= 15 ? <Route path="/gamble" component={Gamble} /> : null }
+        { credits >= 15 ? <Route path="/flipIt" component={Gamble} /> : null }
         <Route component={NotFound} />
       </Switch>
     </div>

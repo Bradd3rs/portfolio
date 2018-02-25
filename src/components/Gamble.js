@@ -15,13 +15,14 @@ class Gamble extends React.Component {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
         this.handleSpendCredits = this.handleSpendCredits.bind(this);
+        this.readUserData = this.readUserData.bind(this);
     }
     componentWillMount() {
         auth.onAuthStateChanged((user) => {
             if (user) {
                 this.setState(() => ({ user: user }));
                 
-                fire.database().ref('users/' + this.state.user.uid).once('value', (snapshot) => {
+                fire.database().ref('users/' + this.state.user.uid).on('value', (snapshot) => {
                     if (snapshot.hasChild('credits')) {
                         this.readUserData();
                     } else {
@@ -88,12 +89,9 @@ class Gamble extends React.Component {
                         </User>             
                     }
                     { this.state.user ?
-                        <div>
-                            <h1>The Casino</h1>
-                            <p>You have {this.state.loading ? 'Loading...' : this.state.userCredits} credits</p>
-                            <button type="button" onClick={this.handleSpendCredits}>Spend Credits</button>   
-                            <CoinToss />  
-                        </div>
+                        <Widgets>  
+                            <CoinToss refreshCredits={this.readUserData} localCredits={this.state.userCredits} />  
+                        </Widgets>
                         :
                         <div>
                             <h1>The Casino</h1>
@@ -107,7 +105,17 @@ class Gamble extends React.Component {
 } 
 
 
- export default Gamble;
+export default Gamble;
+
+const Widgets = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+`;
 
 const Section = styled.section`
 `;
@@ -139,13 +147,5 @@ const User = styled.div`
         height: 40px;
         width: 40px;
         border-radius: 50%;
-    }
-
-    @media only screen and (min-width: 768px) {
-        justify-content: flex-end;
-
-        img {
-            margin-right: 10px;
-        }
     }
 `;
