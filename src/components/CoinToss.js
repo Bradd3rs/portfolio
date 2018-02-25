@@ -13,6 +13,7 @@ class CoinToss extends React.Component {
             result: true,
             wager: 0,
             flipping: false,
+            message: '',
             user: null
         }
         this.handleFlipCoin = this.handleFlipCoin.bind(this);
@@ -28,18 +29,23 @@ class CoinToss extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.setState(() => ({ message: 'Flip it!' }));
+    }
+
     handleCoinToss(userCredits, wager) {
         console.log('fliping coin', wager);
         const bet = this.state.bet;
         Math.floor(Math.random() * 2) === 0 ? this.setState(() => ({ result: true })) : this.setState(() => ({ result: false }));
         const result = this.state.result;
         if(bet === result){
-            console.log('You win!');
+            console.log('Winner!');
             
             fire.database().ref('users/' + this.state.user.uid).set({
                 credits: userCredits + (wager * 2)
             });
             this.props.refreshCredits();
+            this.setState(() => ({ message: 'Winner!' }));
             this.setState(() => ({ flipping: false }));
         } else {
             console.log('you lose :(');
@@ -48,6 +54,7 @@ class CoinToss extends React.Component {
                 credits: userCredits
             });
             this.props.refreshCredits();
+            this.setState(() => ({ message: 'Loser...' }));
             this.setState(() => ({ flipping: false }));
         }
     }
@@ -83,7 +90,7 @@ class CoinToss extends React.Component {
     render() {
         return (
             <Content>
-                <h1>Flip It!</h1>
+                <h1>{this.state.message}</h1>
                 <Choice><button onClick={this.handleChoseBet} type="button">Your bet: {this.state.bet ? <FaDiamond /> : <FaDollar />}</button></Choice>
                 <Result className={this.state.flipping ? 'flipping' : null }>{this.state.result ? <FaDiamond /> : <FaDollar />}</Result>
                 <Wager>
