@@ -12,7 +12,8 @@ class Ctoss extends React.Component {
             jc: 0,
             felix: 0,
             gettingScores: true,
-            user: null
+            user: null,
+            userCredits: 0
         }
         this.handleTom = this.handleTom.bind(this);
         this.handleSam = this.handleSam.bind(this);
@@ -31,6 +32,7 @@ class Ctoss extends React.Component {
                     try {
                         scores.on("value", (snapshot) => {
                             let savedData = snapshot.val()
+                            console.log(savedData);
                             this.setState(() => (savedData))
                             this.setState(() => ({ gettingScores: false }));
                         }, (errorObject) => {
@@ -45,6 +47,7 @@ class Ctoss extends React.Component {
         });
 
     }
+    
     handleUpdateFirebase() {
         setTimeout(() => {
             fire.database().ref('scores').set(
@@ -96,7 +99,8 @@ class Ctoss extends React.Component {
                 <Content>
                     { this.state.user ?
                         <User>
-                            <img src={this.state.user.photoURL} alt="profile pic" />   
+                            <img src={this.state.user.photoURL} alt="profile pic" />  
+                            Credits: {this.state.userCredits} 
                             <Button onClick={this.logout}>Log Out</Button> 
                         </User>         
                         :

@@ -5,6 +5,7 @@ import Home from './Home';
 import Work from './Work';
 import Contact from './Contact';
 import Ctoss from './Ctoss';
+import Gamble from './Gamble';
 import NotFound from './NotFound';
 import Img from '../img/bannerImg.jpg';
 import { FaDiamond } from 'react-icons/lib/fa';
@@ -49,6 +50,7 @@ const Header = ({ addCredit, credits }) => (
         <Route path="/work" component={Work} />
         <Route path="/contact" component={Contact} />
         { credits >= 15 ? <Route path="/ctoss" component={Ctoss} /> : null }
+        { credits >= 15 ? <Route path="/gamble" component={Gamble} /> : null }
         <Route component={NotFound} />
       </Switch>
     </div>
