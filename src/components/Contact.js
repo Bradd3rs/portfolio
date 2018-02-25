@@ -39,7 +39,9 @@ const Content = styled.div`
         padding: 0;
     }
 
-    p,
+    p {
+        line-height: 21px;
+    }
     li {
         line-height: 26px;
     }
