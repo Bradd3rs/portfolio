@@ -123,6 +123,12 @@ class CoinToss extends React.Component {
 const Result = styled.h2`
     font-size: 40px;
     opacity: 1;
+    height: 50px;
+    width: 50px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 50%;
     transform: rotateX(360deg);
     transition: opacity .5s ease-in-out, transform .5s ease-out;
 
