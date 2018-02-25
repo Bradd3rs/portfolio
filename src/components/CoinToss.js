@@ -19,6 +19,7 @@ class CoinToss extends React.Component {
         this.handleFlipCoin = this.handleFlipCoin.bind(this);
         this.handleIncreaseWager = this.handleIncreaseWager.bind(this);
         this.handleDecreaseWager = this.handleDecreaseWager.bind(this);
+        this.handleMaxWager = this.handleMaxWager.bind(this);
         this.handleChoseBet = this.handleChoseBet.bind(this);
     }
     componentWillMount() {
@@ -53,8 +54,13 @@ class CoinToss extends React.Component {
             fire.database().ref('users/' + this.state.user.uid).set({
                 credits: userCredits
             });
+            if(userCredits < wager) {
+                this.setState(() => ({ wager: userCredits }));
+            }
+
+            userCredits ? this.setState(() => ({ message: 'Loser...' })) : this.setState(() => ({ message: 'Please deposit credits' }));
+
             this.props.refreshCredits();
-            this.setState(() => ({ message: 'Loser...' }));
             this.setState(() => ({ flipping: false }));
         }
     }
@@ -65,7 +71,7 @@ class CoinToss extends React.Component {
             const userCredits = snapshot.val();
             const wager = this.state.wager;
             console.log('available credits', userCredits)
-            if(wager < userCredits && wager > 0) {
+            if(wager <= userCredits && wager > 0) {
                 const updatedCredits = userCredits - wager;
                 setTimeout(() => {
                     this.handleCoinToss(updatedCredits, wager);
@@ -80,11 +86,18 @@ class CoinToss extends React.Component {
         this.setState(() => ({ bet: bet }));
     }
     handleIncreaseWager() {
-        this.setState((prevState) => ({ wager: prevState.wager + 10 }));
+        if(this.state.wager < this.props.localCredits) {
+            this.setState((prevState) => ({ wager: prevState.wager + 10 }));
+        }
     }
     handleDecreaseWager() {
         if(this.state.wager !== 0) {
             this.setState((prevState) => ({ wager: prevState.wager - 10 }));
+        }
+    }
+    handleMaxWager() {
+        if(this.props.localCredits !== 0) {
+            this.setState(() => ({ wager: this.props.localCredits }));
         }
     }
     render() {
@@ -95,8 +108,9 @@ class CoinToss extends React.Component {
                 <Result className={this.state.flipping ? 'flipping' : null }>{this.state.result ? <FaDiamond /> : <FaDollar />}</Result>
                 <Wager>
                     <h3>Wager: {this.state.wager}</h3>
-                    <button onClick={this.handleDecreaseWager} type="button">-</button>
-                    <button onClick={this.handleIncreaseWager} type="button">+</button>
+                    <button onClick={this.handleDecreaseWager} disabled={this.state.wager === 0} type="button">-</button>
+                    <button onClick={this.handleMaxWager} disabled={this.state.wager === this.props.localCredits || this.props.localCredits === 0} type="button">Max bet</button>
+                    <button onClick={this.handleIncreaseWager} disabled={this.state.wager === this.props.localCredits} type="button">+</button>
                 </Wager>
                 <PlaceBet><button onClick={this.handleFlipCoin} className="wager" disabled={this.state.wager === 0 || this.state.flipping || this.props.localCredits < this.state.wager ? true : false } type="button">Flip it!</button></PlaceBet>
             </Content>
@@ -130,7 +144,7 @@ const Wager = styled.div`
 
     button {
         height: 40px;
-        width: 40px
+        min-width: 40px
     }
 
 `;
@@ -163,9 +177,11 @@ const Content = styled.div`
 
         &.wager {
             background: #2E7D32;
+            max-width: 250px;
         }
 
-        &:active {
+        &:active,
+        &:disabled {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0), 0 6px 6px rgba(0,0,0,0);
         }

@@ -95,7 +95,7 @@ class Gamble extends React.Component {
                         :
                         <div>
                             <h1>The Casino</h1>
-                            <p>Please log in to see gamble.</p> 
+                            <p>Please log in to play at the casino</p> 
                         </div>            
                     }
                 </Content>
